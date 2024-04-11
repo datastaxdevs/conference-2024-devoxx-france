@@ -1,0 +1,18 @@
+logging:
+  level:
+    org.springframework.web: WARN
+    com.datastax.astra: INFO
+    root: WARN
+
+# ----------------------------------------
+astra:
+  database:
+    name: langchain4j
+    keyspace: langchain4j
+    table: langchain4j
+
+# ----------------------------------------
+openai:
+  embeddings-model: text-embedding-ada-002
+  chat-completion-model: gpt-3.5-turbo
+
