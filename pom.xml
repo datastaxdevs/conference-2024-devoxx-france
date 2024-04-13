@@ -28,10 +28,12 @@
     </properties>
 
     <modules>
-        <module>devoxx-genai</module>
         <module>devoxx-genai-gemini</module>
+        <module>devoxx-genai-langchain-bison</module>
         <module>devoxx-genai-langchain-gemini</module>
-        <module>devoxx-genai-langchain-gemini</module>
+        <module>devoxx-genai-springai-gemini</module>
+        <module>devoxx-genai-utilities</module>
+
     </modules>
 
     <dependencyManagement>

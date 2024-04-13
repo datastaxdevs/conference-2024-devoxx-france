@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>devoxx-genai-gemini</artifactId>
-  <name>Vertex AI and Gemini</name>
+  <name>VertexAI Gemini Client</name>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
@@ -29,7 +29,7 @@
     <!-- UTILITIES -->
     <dependency>
       <groupId>com.google</groupId>
-      <artifactId>devoxx-genai-core</artifactId>
+      <artifactId>devoxx-genai-utilities</artifactId>
       <version>${project.version}</version>
     </dependency>
 
