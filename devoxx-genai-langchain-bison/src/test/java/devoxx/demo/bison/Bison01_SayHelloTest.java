@@ -1,27 +1,22 @@
-package devoxx.demo;
+package devoxx.demo.bison;
 
-import dev.langchain4j.data.image.Image;
-import dev.langchain4j.model.image.ImageModel;
 import dev.langchain4j.model.language.LanguageModel;
 import dev.langchain4j.model.output.Response;
-import dev.langchain4j.model.vertexai.VertexAiImageModel;
 import dev.langchain4j.model.vertexai.VertexAiLanguageModel;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static com.google.devoxx.Utilities.GCP_PROJECT_ENDPOINT;
 import static com.google.devoxx.Utilities.GCP_PROJECT_ID;
 import static com.google.devoxx.Utilities.GCP_PROJECT_LOCATION;
 import static com.google.devoxx.Utilities.GCP_PROJECT_PUBLISHER;
-import static org.assertj.core.api.Assertions.assertThat;
 
-class SayHelloTextBisonTest {
+class Bison01_SayHelloTest {
 
     @Test
     public void shouldSayHelloToLLM() {
 
         LanguageModel llm = VertexAiLanguageModel.builder()
+                .publisher(GCP_PROJECT_PUBLISHER)
                 .project(GCP_PROJECT_ID)
                 .endpoint(GCP_PROJECT_ENDPOINT)
                 .location(GCP_PROJECT_LOCATION)
@@ -37,6 +32,7 @@ class SayHelloTextBisonTest {
     public void shouldFineTuneYourRequest() {
 
         LanguageModel llm =  VertexAiLanguageModel.builder()
+                .publisher(GCP_PROJECT_PUBLISHER)
                 .project(GCP_PROJECT_ID)
                 .endpoint(GCP_PROJECT_ENDPOINT)
                 .location(GCP_PROJECT_LOCATION)

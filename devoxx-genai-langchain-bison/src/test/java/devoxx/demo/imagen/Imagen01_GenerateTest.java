@@ -1,11 +1,9 @@
-package devoxx.demo;
+package devoxx.demo.imagen;
 
 import dev.langchain4j.data.image.Image;
 import dev.langchain4j.model.image.ImageModel;
-import dev.langchain4j.model.language.LanguageModel;
 import dev.langchain4j.model.output.Response;
 import dev.langchain4j.model.vertexai.VertexAiImageModel;
-import dev.langchain4j.model.vertexai.VertexAiLanguageModel;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -16,7 +14,7 @@ import static com.google.devoxx.Utilities.GCP_PROJECT_LOCATION;
 import static com.google.devoxx.Utilities.GCP_PROJECT_PUBLISHER;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SayHelloImagenBisonTest {
+class Imagen01_GenerateTest {
 
     @Test
     public void shouldSayHelloToImageModel() {

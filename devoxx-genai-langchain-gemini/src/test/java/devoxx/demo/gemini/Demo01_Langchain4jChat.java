@@ -1,8 +1,7 @@
-package devoxx.demo;
+package devoxx.demo.gemini;
 
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
-import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.chat.StreamingChatLanguageModel;
@@ -15,18 +14,14 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.devoxx.Utilities.GCP_PROJECT_ENDPOINT;
 import static com.google.devoxx.Utilities.GCP_PROJECT_ID;
 import static com.google.devoxx.Utilities.GCP_PROJECT_LOCATION;
-import static com.google.devoxx.Utilities.GCP_PROJECT_PUBLISHER;
 
-class Demo01SayHelloGemini {
-
-    ChatLanguageModel chatLanguageModel;
+class Demo01_Langchain4jChat {
 
     @Test
     public void shouldSayHelloToLLM() {
-        chatLanguageModel= VertexAiGeminiChatModel.builder()
+        ChatLanguageModel chatLanguageModel= VertexAiGeminiChatModel.builder()
                 .project(GCP_PROJECT_ID)
                 .location(GCP_PROJECT_LOCATION)
                 .modelName("gemini-pro")

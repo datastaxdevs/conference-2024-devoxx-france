@@ -3,8 +3,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>devoxx-genai-bison</artifactId>
-  <name>Vertex AI and Palm2</name>
+  <artifactId>devoxx-genai-langchain-bison</artifactId>
+  <name>Vertex AI and Palm</name>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
@@ -29,11 +29,6 @@
 
     <dependency>
       <groupId>dev.langchain4j</groupId>
-      <artifactId>langchain4j-astradb</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>dev.langchain4j</groupId>
       <artifactId>langchain4j-vertex-ai</artifactId>
       <version>${langchain4j.version}</version>
     </dependency>
@@ -41,11 +36,6 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
