@@ -28,11 +28,12 @@
     </properties>
 
     <modules>
-        <module>devoxx-genai-gemini</module>
-        <module>devoxx-genai-langchain-bison</module>
-        <module>devoxx-genai-langchain-gemini</module>
-        <module>devoxx-genai-springai-gemini</module>
+        <module>devoxx-genai-vertexai-client</module>
+        <module>devoxx-genai-langchain4j</module>
+        <module>devoxx-genai-langchain4j-gemini</module>
+        <module>devoxx-genai-springai</module>
         <module>devoxx-genai-utilities</module>
+        <module>devoxx-genai-cassandra</module>
 
     </modules>
 
@@ -82,6 +83,21 @@
             <dependency>
                 <groupId>dev.langchain4j</groupId>
                 <artifactId>langchain4j-astradb</artifactId>
+                <version>${langchain4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-ollama</artifactId>
+                <version>${langchain4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-cohere</artifactId>
+                <version>${langchain4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-cassandra</artifactId>
                 <version>${langchain4j.version}</version>
             </dependency>
             <dependency>
