@@ -30,3 +30,4 @@ dist
 
 release.properties
 pom.xml.releaseBackup
+.vscode/
