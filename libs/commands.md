@@ -12,7 +12,7 @@ mvn install:install-file \
 
 ```console
 mvn install:install-file \
-  -Dfile=langchain4j-astra-0.29.1.jar \
+  -Dfile=langchain4j-astradb-0.29.1.jar \
   -DgroupId=dev.langchain4j \
   -DartifactId=langchain4j-astradb \
   -Dversion=0.29.1 \
