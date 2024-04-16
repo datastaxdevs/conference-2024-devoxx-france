@@ -16,7 +16,7 @@
         <lombok.version>1.18.32</lombok.version>
         <slf4j.version>2.0.12</slf4j.version>
         <logback.version>1.5.2</logback.version>
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.17.0</jackson.version>
 
         <langchain4j.version>0.29.1</langchain4j.version>
         <astra-db-java.version>1.0.0</astra-db-java.version>
@@ -33,8 +33,6 @@
         <module>devoxx-genai-langchain4j-gemini</module>
         <module>devoxx-genai-springai</module>
         <module>devoxx-genai-utilities</module>
-        <module>devoxx-genai-cassandra</module>
-
     </modules>
 
     <dependencyManagement>
@@ -46,6 +44,18 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>com.datastax.astra</groupId>
                 <artifactId>astra-db-java</artifactId>
