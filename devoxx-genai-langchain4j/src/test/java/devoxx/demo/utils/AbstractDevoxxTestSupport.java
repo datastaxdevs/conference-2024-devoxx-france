@@ -6,17 +6,27 @@ import com.datastax.astra.client.model.Document;
 import com.datastax.astra.internal.command.LoggingCommandObserver;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.dtsx.astra.sdk.db.AstraDBOpsClient;
+import dev.langchain4j.data.document.parser.TextDocumentParser;
+import dev.langchain4j.data.document.splitter.DocumentSplitters;
+import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.language.LanguageModel;
 import dev.langchain4j.model.vertexai.VertexAiChatModel;
 import dev.langchain4j.model.vertexai.VertexAiEmbeddingModel;
 import dev.langchain4j.model.vertexai.VertexAiLanguageModel;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
+import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
+import dev.langchain4j.store.embedding.EmbeddingStore;
+import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Objects;
 
 import static com.datastax.astra.client.model.SimilarityMetric.COSINE;
+import static dev.langchain4j.data.document.loader.FileSystemDocumentLoader.loadDocument;
 import static devoxx.demo.devoxx.Utilities.ASTRA_API_ENDPOINT;
 import static devoxx.demo.devoxx.Utilities.ASTRA_DB_ID;
 import static devoxx.demo.devoxx.Utilities.ASTRA_DB_REGION;
@@ -124,6 +134,37 @@ public class AbstractDevoxxTestSupport {
         return new DataAPIClient(ASTRA_TOKEN)
                 .getDatabase(ASTRA_API_ENDPOINT)
                 .getCollection("rag_store");
+    }
+
+    protected ContentRetriever createRetriever(String fileName) {
+        List<TextSegment> segments = DocumentSplitters
+                .recursive(300, 0)
+                .split(loadDocument(new File(Objects.requireNonNull(getClass()
+                                .getResource(fileName))
+                        .getFile()).toPath(), new TextDocumentParser()));
+        EmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
+        embeddingStore.addAll(getEmbeddingModelGecko().embedAll(segments).content(), segments);
+        return EmbeddingStoreContentRetriever.builder()
+                .embeddingStore(embeddingStore)
+                .embeddingModel(getEmbeddingModelGecko())
+                .maxResults(2)
+                .minScore(0.6)
+                .build();
+    }
+
+    protected EmbeddingStoreContentRetriever.EmbeddingStoreContentRetrieverBuilder createRetrieverBuilder(String fileName) {
+        List<TextSegment> segments = DocumentSplitters
+                .recursive(300, 0)
+                .split(loadDocument(new File(Objects.requireNonNull(getClass()
+                                .getResource(fileName))
+                        .getFile()).toPath(), new TextDocumentParser()));
+        EmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
+        embeddingStore.addAll(getEmbeddingModelGecko().embedAll(segments).content(), segments);
+        return EmbeddingStoreContentRetriever.builder()
+                .embeddingStore(embeddingStore)
+                .embeddingModel(getEmbeddingModelGecko())
+                .maxResults(2)
+                .minScore(0.6);
     }
 
 

@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static dev.langchain4j.store.embedding.filter.MetadataFilterBuilder.metadataKey;
 import static java.util.stream.Collectors.joining;
 
 
@@ -28,7 +29,7 @@ public class _62_NaiveRag_RetrievalTest extends AbstractDevoxxTestSupport {
     private static final Logger log = LoggerFactory.getLogger(_62_NaiveRag_RetrievalTest.class);
 
     @Test
-    public void shouldRetrieveDocument() {
+    public void shouldRetrieveContent1() {
 
         PromptTemplate promptTemplate = PromptTemplate.from(
                 "Answer the following question to the best of your ability:\n"
@@ -44,6 +45,7 @@ public class _62_NaiveRag_RetrievalTest extends AbstractDevoxxTestSupport {
         // RAG CONTEXT
         List<EmbeddingMatch<TextSegment>> relevantEmbeddings = new AstraDbEmbeddingStore(getCollectionRAG())
                 .search(EmbeddingSearchRequest.builder()
+                        //.filter(metadataKey("document_format").isEqualTo("text"))
                         .queryEmbedding(getEmbeddingModelGecko().embed(question).content())
                         .minScore(0.5)
                         .maxResults(2)
@@ -63,7 +65,7 @@ public class _62_NaiveRag_RetrievalTest extends AbstractDevoxxTestSupport {
     }
 
     @Test
-    public void shouldRetrieveDocument2() {
+    public void shouldRetrieveContent2() {
 
         ContentRetriever contentRetriever = EmbeddingStoreContentRetriever.builder()
                 .embeddingStore(new AstraDbEmbeddingStore(getCollectionRAG()))
