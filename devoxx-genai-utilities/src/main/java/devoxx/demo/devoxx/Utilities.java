@@ -17,6 +17,9 @@ public class Utilities {
     public static final String GCP_PROJECT_ENDPOINT  = "us-central1-aiplatform.googleapis.com:443";
     public static final String GCP_PROJECT_LOCATION  = "us-central1";
 
+    public static final Integer EMBEDDING_DIMENSION = 768;
+    public static final String  TABLE_NAME          = "vector_store";
+
     public static final String ASTRA_TOKEN           = System.getenv("ASTRA_DB_APPLICATION_TOKEN");
     public static final String ASTRA_DB_ID           = "bace77c5-80ea-4bc4-a0f4-529121918cd4";
     public static final String ASTRA_DB_REGION       = "us-east1";
