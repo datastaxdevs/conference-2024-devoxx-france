@@ -6,7 +6,7 @@
         </encoder>
     </appender>
 
-    <logger name="devoxx.demo" level="INFO" additivity="false">
+    <logger name="devoxx.demo" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 

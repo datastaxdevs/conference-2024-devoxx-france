@@ -34,10 +34,6 @@ public class Utils {
         }
     }
 
-    public static PathMatcher glob(String glob) {
-        return FileSystems.getDefault().getPathMatcher("glob:" + glob);
-    }
-
     public static Path toPath(String relativePath) {
         try {
             URL fileUrl = Utils.class.getClassLoader().getResource(relativePath);
